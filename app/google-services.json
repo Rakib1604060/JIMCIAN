@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "516445011245",
+    "firebase_url": "https://jimcian.firebaseio.com",
+    "project_id": "jimcian",
+    "storage_bucket": "jimcian.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516445011245:android:560b7ce86efdc84d0be7a4",
+        "android_client_info": {
+          "package_name": "com.medical.jimcian"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516445011245-1kg1q939ouk1r3v20cn82m1710pnhvck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR0KANFoCSy9j7dKuKrqKX8JSAdsfF4X4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516445011245-1kg1q939ouk1r3v20cn82m1710pnhvck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

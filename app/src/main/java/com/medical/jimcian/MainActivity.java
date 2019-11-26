@@ -2,7 +2,12 @@ package com.medical.jimcian;
 
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -12,6 +17,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
+    FirebaseAuth auth;
+    FirebaseUser user;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -38,6 +46,27 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
+
+        auth=FirebaseAuth.getInstance();
+        user=auth.getCurrentUser();
+
+        if (user != null) {
+            mTextMessage.setText(user.getEmail());
+        }
+         user.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+             @Override
+             public void onComplete(@NonNull Task<Void> task) {
+                 if (task.isSuccessful()){
+                     user=FirebaseAuth.getInstance().getCurrentUser();
+                     if (!user.isEmailVerified()){
+                         user.sendEmailVerification();
+
+                     }
+                 }
+
+             }
+         });
+
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
