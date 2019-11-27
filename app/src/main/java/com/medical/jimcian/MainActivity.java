@@ -53,19 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (user != null) {
             mTextMessage.setText(user.getEmail());
         }
-         user.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
-             @Override
-             public void onComplete(@NonNull Task<Void> task) {
-                 if (task.isSuccessful()){
-                     user=FirebaseAuth.getInstance().getCurrentUser();
-                     if (!user.isEmailVerified()){
-                         user.sendEmailVerification();
 
-                     }
-                 }
-
-             }
-         });
 
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
